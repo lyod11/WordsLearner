@@ -37,8 +37,8 @@ public class DictionaryCursorAdapter extends CursorAdapter {
         textView.setText(string);
 
         textView = (TextView) view.findViewById(R.id.tvProgress);
-        string = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.PROGRESS));
-        textView.setText(string);
+        Integer integer = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.PROGRESS));
+        textView.setText(integer);
 
 
     }

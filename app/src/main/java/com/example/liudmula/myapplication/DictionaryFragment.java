@@ -1,7 +1,9 @@
 package com.example.liudmula.myapplication;
 
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,7 +12,9 @@ import android.support.v4.widget.SimpleCursorAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 
 /**
@@ -53,5 +57,32 @@ public class DictionaryFragment extends Fragment {
 
         adapter = new DictionaryCursorAdapter(this.getContext(), cursor);
         listView.setAdapter(adapter);
+
+        //what the hell is that AdapterView???
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TextView tvWord = (TextView) view.findViewById(R.id.tvWord);
+                TextView tvDesc = (TextView) view.findViewById(R.id.tvDescription);
+                TextView tvProgr = (TextView) view.findViewById(R.id.tvProgress);
+
+                String wordKey = tvWord.getText().toString();
+                String descKey = tvDesc.getText().toString();
+                String progrKey = tvProgr.getText().toString();
+
+                Intent modify_intent = new Intent(getActivity().getApplicationContext(), ModifyWordsActivity.class);
+                modify_intent.putExtra("word", wordKey);
+                modify_intent.putExtra("desc", descKey);
+                modify_intent.putExtra("progress", progrKey);
+
+                startActivity(modify_intent);
+
+
+            }
+        });
     }
+
+
+
 }
