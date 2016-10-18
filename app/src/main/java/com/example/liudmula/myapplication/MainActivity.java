@@ -1,6 +1,7 @@
 package com.example.liudmula.myapplication;
 
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -89,6 +90,10 @@ public class MainActivity extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }
+        if(id == R.id.action_add){
+            Intent add_new = new Intent (this, ModifyWordsActivity.class);
+            startActivity(add_new);
         }
 
         return super.onOptionsItemSelected(item);
