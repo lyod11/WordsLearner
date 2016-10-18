@@ -22,12 +22,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     static final int DB_VERSION = 1;
 
     private static final String  CREATE_TABLE = "create table " + TABLE_NAME + "(" +
-            _ID + "INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            WORD + "TEXT NOT NULL, " +
-            DESC + "TEXT" +
-            PROGRESS + "INTEGER NOT NULL);";
-
-
+            _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            WORD + " TEXT NOT NULL, " +
+            DESC + " TEXT, " +
+            PROGRESS + " INTEGER);";
 
     public DatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -35,6 +33,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
         db.execSQL(CREATE_TABLE);
     }
 
