@@ -8,8 +8,8 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -95,8 +95,7 @@ public class MainActivity extends AppCompatActivity
             return true;
         }
         if(id == R.id.action_add){
-            Intent add_new = new Intent (this, ModifyWordsActivity.class);
-            startActivity(add_new);
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -195,7 +194,7 @@ public class MainActivity extends AppCompatActivity
             e.printStackTrace();
         }
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.content_main, fragment).commit();
 
     }

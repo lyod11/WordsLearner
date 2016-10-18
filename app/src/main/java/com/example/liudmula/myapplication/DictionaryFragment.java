@@ -1,14 +1,10 @@
 package com.example.liudmula.myapplication;
 
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
+
+import android.app.Fragment;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.widget.SimpleCursorAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,59 +37,48 @@ public class DictionaryFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_dictionary, container, false);
         listView = (ListView) view.findViewById(R.id.lvDict);
+        dbManager = new DBManager(inflater.getContext());
+        dbManager.open();
 
         //make the cursor global and private?
         Cursor cursor = dbManager.fetch();
-        adapter = new DictionaryCursorAdapter(this.getContext(), cursor);
+        adapter = new DictionaryCursorAdapter(inflater.getContext(), cursor);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+
                 TextView tvId = (TextView) view.findViewById(R.id.tv_id);
                 TextView tvWord = (TextView) view.findViewById(R.id.tvWord);
                 TextView tvDesc = (TextView) view.findViewById(R.id.tvDescription);
-                TextView tvProgr = (TextView) view.findViewById(R.id.tvProgress);
+     //           TextView tvProgr = (TextView) view.findViewById(R.id.tvProgress);
 
                 String idKey = tvId.getText().toString();
                 String wordKey = tvWord.getText().toString();
                 String descKey = tvDesc.getText().toString();
                 //           String progrKey = tvProgr.getText().toString();  зачєм передавати прогрес в модіфай? ненада
 
-                Intent modify_intent = new Intent(getActivity().getApplicationContext(), ModifyWordsActivity.class);
-
-                modify_intent.putExtra("_id", idKey);
-                modify_intent.putExtra("word", wordKey);
-                modify_intent.putExtra("desc", descKey);
-//                modify_intent.putExtra("progress", progrKey);
-
-                startActivity(modify_intent);
-
+                Bundle bundle = new Bundle();
+                bundle.putString("_id", idKey);
+                bundle.putString("word", wordKey);
+                bundle.putString("desc", descKey);
+                ModifyWordFragmentDialog dialogModify = new ModifyWordFragmentDialog();
+                dialogModify.setArguments(bundle);
+                dialogModify.show(getFragmentManager(), "DialogModify");
+                adapter.notifyDataSetChanged();
 
             }
         });
-
-
 
         return view;
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        dbManager = new DBManager(this.getContext());
-        dbManager.open();
-
-
-
-       // listView.setEmptyView(); що за єрєсь?
-
-
-
-        //what the hell is that AdapterView???
-        //for modify
-
     }
 
 
