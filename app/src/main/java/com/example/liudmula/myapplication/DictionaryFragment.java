@@ -39,26 +39,14 @@ public class DictionaryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dictionary, container, false);
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        dbManager = new DBManager(this.getContext());
-        dbManager.open();
-        //make the cursor global and private?
-        Cursor cursor = dbManager.fetch();
-
+        view = inflater.inflate(R.layout.fragment_dictionary, container, false);
         listView = (ListView) view.findViewById(R.id.lvDict);
 
-       // listView.setEmptyView(); що за єрєсь?
-
+        //make the cursor global and private?
+        Cursor cursor = dbManager.fetch();
         adapter = new DictionaryCursorAdapter(this.getContext(), cursor);
         listView.setAdapter(adapter);
 
-        //what the hell is that AdapterView???
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
             @Override
@@ -71,7 +59,7 @@ public class DictionaryFragment extends Fragment {
                 String idKey = tvId.getText().toString();
                 String wordKey = tvWord.getText().toString();
                 String descKey = tvDesc.getText().toString();
-     //           String progrKey = tvProgr.getText().toString();  зачєм передавати прогрес в модіфай? ненада
+                //           String progrKey = tvProgr.getText().toString();  зачєм передавати прогрес в модіфай? ненада
 
                 Intent modify_intent = new Intent(getActivity().getApplicationContext(), ModifyWordsActivity.class);
 
@@ -85,6 +73,27 @@ public class DictionaryFragment extends Fragment {
 
             }
         });
+
+
+
+        return view;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        dbManager = new DBManager(this.getContext());
+        dbManager.open();
+
+
+
+       // listView.setEmptyView(); що за єрєсь?
+
+
+
+        //what the hell is that AdapterView???
+        //for modify
+
     }
 
 
