@@ -63,18 +63,22 @@ public class DictionaryFragment extends Fragment {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TextView tvId = (TextView) view.findViewById(R.id.tv_id);
                 TextView tvWord = (TextView) view.findViewById(R.id.tvWord);
                 TextView tvDesc = (TextView) view.findViewById(R.id.tvDescription);
                 TextView tvProgr = (TextView) view.findViewById(R.id.tvProgress);
 
+                String idKey = tvId.getText().toString();
                 String wordKey = tvWord.getText().toString();
                 String descKey = tvDesc.getText().toString();
-                String progrKey = tvProgr.getText().toString();
+     //           String progrKey = tvProgr.getText().toString();  зачєм передавати прогрес в модіфай? ненада
 
                 Intent modify_intent = new Intent(getActivity().getApplicationContext(), ModifyWordsActivity.class);
+
+                modify_intent.putExtra("_id", idKey);
                 modify_intent.putExtra("word", wordKey);
                 modify_intent.putExtra("desc", descKey);
-                modify_intent.putExtra("progress", progrKey);
+//                modify_intent.putExtra("progress", progrKey);
 
                 startActivity(modify_intent);
 

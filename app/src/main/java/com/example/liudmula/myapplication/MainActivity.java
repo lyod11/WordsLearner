@@ -107,35 +107,9 @@ public class MainActivity extends AppCompatActivity
 
         //creating a new fragment
 
-        Fragment fragment = null;
-        Class fragmentClass = null;
+        this.startFragment(id);
 
-        if (id == R.id.nav_dictionary) {
-            fragmentClass = DictionaryFragment.class;
 
-        } else if (id == R.id.nav_training) {
-            fragmentClass = TraningChooserFragment.class;
-
-        } else if (id == R.id.nav_settings) {
-            fragmentClass = SettingsFragment.class;
-
-        } else if (id == R.id.nav_about) {
-            fragmentClass = AboutFragment.class;
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        }
-
-        try {
-            fragment = (Fragment)fragmentClass.newInstance();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.content_main, fragment).commit();
         //secect menu item
         item.setChecked(true);
         //вивести вибраний пункт в заголовок
@@ -171,6 +145,13 @@ public class MainActivity extends AppCompatActivity
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client.connect();
         AppIndex.AppIndexApi.start(client, getIndexApiAction());
+        Intent intent = new Intent();
+        int id = intent.getIntExtra("Fragment", 0);
+        if(id != 0){
+            this.startFragment(id);
+        }
+
+
     }
 
     @Override
@@ -181,5 +162,38 @@ public class MainActivity extends AppCompatActivity
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         AppIndex.AppIndexApi.end(client, getIndexApiAction());
         client.disconnect();
+    }
+
+    public void startFragment(int id){
+        Fragment fragment = null;
+        Class fragmentClass = null;
+
+        if (id == R.id.nav_dictionary) {
+            fragmentClass = DictionaryFragment.class;
+
+        } else if (id == R.id.nav_training) {
+            fragmentClass = TraningChooserFragment.class;
+
+        } else if (id == R.id.nav_settings) {
+            fragmentClass = SettingsFragment.class;
+
+        } else if (id == R.id.nav_about) {
+            fragmentClass = AboutFragment.class;
+
+        } else if (id == R.id.nav_share) {
+
+        } else if (id == R.id.nav_send) {
+
+        }
+
+        try {
+            fragment = (Fragment)fragmentClass.newInstance();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.content_main, fragment).commit();
+
     }
 }
