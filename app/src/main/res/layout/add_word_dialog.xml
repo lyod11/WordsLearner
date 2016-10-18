@@ -19,8 +19,7 @@
         android:id="@+id/etAddDesc"
         android:ems="10"
         android:hint="Enter description"
-        android:inputType="textMultiLine"
-        android:minLines="5"/>
+        android:inputType="textMultiLine" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,7 +33,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/btn_Add_word"
             android:layout_weight="1"
-            android:text="Редагувати"
+            android:text="ДОДАТИ"
             />
 
 
