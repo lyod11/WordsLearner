@@ -28,7 +28,11 @@ public class DictionaryCursorAdapter extends CursorAdapter {
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
 
-        TextView textView = (TextView) view.findViewById(R.id.tvWord);
+        TextView textView = (TextView) view.findViewById(R.id.tv_id);
+        Integer _id = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper._ID));
+        textView.setText(_id.toString());
+
+        textView = (TextView) view.findViewById(R.id.tvWord);
         String string = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.WORD));
         textView.setText(string);
 
