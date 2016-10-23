@@ -13,9 +13,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class DictionaryFragment extends Fragment {
 
     private DBManager dbManager;

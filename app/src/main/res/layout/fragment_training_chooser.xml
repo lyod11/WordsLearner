@@ -1,0 +1,43 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="horizontal"
+    android:background="@color/colorWhite"
+    android:id="@+id/frag_training_chooser"
+    tools:context="com.example.liudmula.myapplication.TrainingChooserFragment">
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:columnCount="2"
+        android:rowCount="2"
+        android:useDefaultMargins="true"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+        <Button
+            android:text="Слово-переклад"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:id="@+id/btn_w_t" />
+        <Button
+            android:text="Переклад-слово"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:id="@+id/btn_t_w" />
+        <Button
+            android:text="Словникові картки"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:id="@+id/btn_card" />
+        <Button
+            android:text="Написання"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:id="@+id/btn_type" />
+    </GridLayout>
+</RelativeLayout>

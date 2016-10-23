@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -174,7 +173,7 @@ public class MainActivity extends AppCompatActivity
             fragmentClass = DictionaryFragment.class;
 
         } else if (id == R.id.nav_training) {
-            fragmentClass = TraningChooserFragment.class;
+            fragmentClass = TrainingChooserFragment.class;
 
         } else if (id == R.id.nav_settings) {
             fragmentClass = SettingsFragment.class;
@@ -198,4 +197,6 @@ public class MainActivity extends AppCompatActivity
         fragmentManager.beginTransaction().replace(R.id.content_main, fragment).commit();
 
     }
+
+
 }
