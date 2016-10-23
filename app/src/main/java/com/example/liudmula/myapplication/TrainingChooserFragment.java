@@ -2,6 +2,7 @@ package com.example.liudmula.myapplication;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ public class TrainingChooserFragment extends Fragment implements View.OnClickLis
     Button btnWT, btnTW, btnCards, btnType;
     Toast toast;
     Context context;
+
 
 
     @Override
@@ -35,10 +37,12 @@ public class TrainingChooserFragment extends Fragment implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
+        Intent intent = new Intent();
 
         switch (v.getId()){
             case R.id.btn_w_t:
-
+                intent.setClass(context, TrainingWordTranslationActivity.class);
+                startActivity(intent);
                 break;
             case R.id.btn_t_w:
                 toast = Toast.makeText(context, "Тренування переклад-слово не працює", Toast.LENGTH_SHORT);

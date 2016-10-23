@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_training_word_translation"
@@ -12,74 +13,94 @@
     tools:context="com.example.liudmula.myapplication.TrainingWordTranslationActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
         android:layout_gravity="center"
-        android:layout_margin="150dp"
+        android:gravity="center"
+        android:layout_marginTop="150dp"
+        android:layout_marginBottom="150dp"
         android:id="@+id/tv_training1_word"
-        android:text="word"
-        android:textSize="120sp"/>
+        android:text="short word"
+        android:textSize="120sp"
+        />
 
-    <GridLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="40dp"
-        android:columnCount="2"
-        android:rowCount="3"
         android:orientation="vertical"
         >
 
-        <Button
-            android:text="word1"
-            android:id="@+id/btn_trn1_w1"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_gravity="fill"
-            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-        <Button
-            android:text="word2"
-            android:id="@+id/btn_trn1_w2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_gravity="fill"/>
-        <Button
-            android:text="word3"
-            android:id="@+id/btn_trn1_w3"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_gravity="fill"/>
-        <Button
-            android:text="word4"
-            android:id="@+id/btn_trn1_w4"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_gravity="fill"/>
-        <Button
-            android:text="word5"
-            android:id="@+id/btn_trn1_w5"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_gravity="fill"/>
-        <Button
-            android:text="word6"
-            android:id="@+id/btn_trn1_w6"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_gravity="fill"/>
+            <Button
+                android:text="word1"
+                android:id="@+id/btn_trn1_w1"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                />
+
+            <Button
+                android:text="word2"
+                android:id="@+id/btn_trn1_w2"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                />
+        </LinearLayout>
 
 
-    </GridLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button
+                android:text="word3"
+                android:id="@+id/btn_trn1_w3"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                />
+            <Button
+                android:text="word4"
+                android:id="@+id/btn_trn1_w4"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button
+                android:text="word5"
+                android:id="@+id/btn_trn1_w5"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                />
+            <Button
+                android:text="word6"
+                android:id="@+id/btn_trn1_w6"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 </LinearLayout>
