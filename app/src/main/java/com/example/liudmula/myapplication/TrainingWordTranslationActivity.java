@@ -21,6 +21,7 @@ public class TrainingWordTranslationActivity extends Activity implements View.On
     int indexWord, indexDesc;
     long id;
     final Handler handler = new Handler();
+    int delayTime = 2000;
 
 
 
@@ -56,77 +57,28 @@ public class TrainingWordTranslationActivity extends Activity implements View.On
 
     @Override
     public void onClick(View v) {
-        switch(v.getId()){
-            case R.id.btn_trn1_w1:
-                if(btnTrans1.getText().toString().equalsIgnoreCase(learningWordsCursor.getString(indexDesc))){
-                    updateProgress();
-                    changeButtonColor(true, btnTrans1);
-
-                }else{
-                    changeButtonColor(false, btnTrans1);
-                    changeButtonColor(true, findAnswerButton(learningWordsCursor.getString(indexDesc)));
+        Button btnClicked = (Button)findViewById(v.getId());
+        final Button btnCorrectAnswer = findAnswerButton(learningWordsCursor.getString(indexDesc));
+        if(btnClicked.equals(btnCorrectAnswer)){
+            updateProgress();
+            changeButtonColor(true, btnClicked, delayTime);
+        }else{
+            changeButtonColor(false, btnClicked, delayTime/2);
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    changeButtonColor(true, btnCorrectAnswer, delayTime/2);
                 }
-                break;
-
-
-            case R.id.btn_trn1_w2:
-                if(btnTrans2.getText().toString().equalsIgnoreCase(learningWordsCursor.getString(indexDesc))){
-                    updateProgress();
-                    changeButtonColor(true, btnTrans2);
-
-                }else{
-                    changeButtonColor(false, btnTrans2);
-                    changeButtonColor(true, findAnswerButton(learningWordsCursor.getString(indexDesc)));
-                }
-                break;
-            case R.id.btn_trn1_w3:
-                if(btnTrans3.getText().toString().equalsIgnoreCase(learningWordsCursor.getString(indexDesc))){
-                    updateProgress();
-                    changeButtonColor(true, btnTrans3);
-
-                }else{
-                    changeButtonColor(false, btnTrans3);
-                    changeButtonColor(true, findAnswerButton(learningWordsCursor.getString(indexDesc)));
-                }
-                break;
-            case R.id.btn_trn1_w4:
-                if(btnTrans4.getText().toString().equalsIgnoreCase(learningWordsCursor.getString(indexDesc))){
-                    updateProgress();
-                    changeButtonColor(true, btnTrans4);
-
-                }else{
-                    changeButtonColor(false, btnTrans4);
-                    changeButtonColor(true, findAnswerButton(learningWordsCursor.getString(indexDesc)));
-                }
-                break;
-            case R.id.btn_trn1_w5:
-                if(btnTrans5.getText().toString().equalsIgnoreCase(learningWordsCursor.getString(indexDesc))){
-                    updateProgress();
-                    changeButtonColor(true, btnTrans5);
-
-                }else{
-                    changeButtonColor(false, btnTrans5);
-                    changeButtonColor(true, findAnswerButton(learningWordsCursor.getString(indexDesc)));
-                }
-                break;
-            case R.id.btn_trn1_w6:
-                if(btnTrans6.getText().toString().equalsIgnoreCase(learningWordsCursor.getString(indexDesc))){
-                    updateProgress();
-                    changeButtonColor(true, btnTrans6);
-
-                }else{
-                    changeButtonColor(false, btnTrans6);
-                    changeButtonColor(true, findAnswerButton(learningWordsCursor.getString(indexDesc)));
-                }
-                break;
+            }, delayTime/2);
 
         }
+
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 buttonPressed();
             }
-        }, 4000);
+        }, delayTime);
        //buttonPressed();
 
 
@@ -174,42 +126,19 @@ public class TrainingWordTranslationActivity extends Activity implements View.On
 
     }
 
-    public void changeButtonColor(final boolean answer, final Button button){
+    public void changeButtonColor(final boolean answer, final Button button, int time){
         if(answer) {
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    button.setBackgroundColor(getResources().getColor(R.color.colorGreen));
-
-                }
-            }, 2000);
-
-        }else{
-            button.setBackgroundColor(getResources().getColor(R.color.colorRed));
 //            handler.postDelayed(new Runnable() {
 //                @Override
 //                public void run() {
-//                    button.setBackgroundColor(getResources().getColor(R.color.colorRed));
+//                    button.setBackgroundColor(getResources().getColor(R.color.colorGreen));
 //
 //                }
 //            }, 2000);
-
+            button.setBackgroundColor(getResources().getColor(R.color.colorGreen));
+        }else {
+            button.setBackgroundColor(getResources().getColor(R.color.colorRed));
         }
-
-//        Thread thread = new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//
-//                try {
-//                    Thread.sleep(2000);
-//                    button.setBackgroundResource(android.R.drawable.btn_default);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
-//
-//            }
-//        });
-//        thread.run();
 
 
         handler.postDelayed(new Runnable() {
@@ -218,7 +147,7 @@ public class TrainingWordTranslationActivity extends Activity implements View.On
                 button.setBackgroundResource(android.R.drawable.btn_default);
 
             }
-        }, 4000);
+        }, time);
 
 
 
