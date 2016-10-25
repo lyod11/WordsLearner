@@ -3,6 +3,7 @@ package com.example.liudmula.myapplication;
 import android.app.Activity;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.Button;
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class TrainingWordTranslationActivity extends Activity implements View.On
     DBManager dbManager;
     int indexWord, indexDesc;
     long id;
-    Handler handler = new Handler();
+    final Handler handler = new Handler();
 
 
 
@@ -50,82 +51,91 @@ public class TrainingWordTranslationActivity extends Activity implements View.On
         indexWord = learningWordsCursor.getColumnIndex(DatabaseHelper.WORD);
         indexDesc = learningWordsCursor.getColumnIndex(DatabaseHelper.DESC);
         setButtonsText();
+
     }
 
     @Override
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.btn_trn1_w1:
-                if(btnTrans1.getText().toString() == learningWordsCursor.getString(indexDesc)){
+                if(btnTrans1.getText().toString().equalsIgnoreCase(learningWordsCursor.getString(indexDesc))){
                     updateProgress();
-
+                    changeButtonColor(true, btnTrans1);
 
                 }else{
-                   /// btnTrans1.setBackgroundColor(getResources().getColor(R.color.colorRed));
-
+                    changeButtonColor(false, btnTrans1);
+                    changeButtonColor(true, findAnswerButton(learningWordsCursor.getString(indexDesc)));
                 }
                 break;
 
-//                handler.postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        btnTrans1.setBackgroundColor(getResources().getColor(R.color.colorGreen));
-//                    }
-//                }, 2000);
+
             case R.id.btn_trn1_w2:
-                if(btnTrans2.getText().toString() == learningWordsCursor.getString(indexDesc)){
+                if(btnTrans2.getText().toString().equalsIgnoreCase(learningWordsCursor.getString(indexDesc))){
                     updateProgress();
+                    changeButtonColor(true, btnTrans2);
 
                 }else{
-                    /// btnTrans1.setBackgroundColor(getResources().getColor(R.color.colorRed));
-
+                    changeButtonColor(false, btnTrans2);
+                    changeButtonColor(true, findAnswerButton(learningWordsCursor.getString(indexDesc)));
                 }
                 break;
             case R.id.btn_trn1_w3:
-                if(btnTrans3.getText().toString() == learningWordsCursor.getString(indexDesc)){
+                if(btnTrans3.getText().toString().equalsIgnoreCase(learningWordsCursor.getString(indexDesc))){
                     updateProgress();
+                    changeButtonColor(true, btnTrans3);
 
                 }else{
-                    /// btnTrans1.setBackgroundColor(getResources().getColor(R.color.colorRed));
-
+                    changeButtonColor(false, btnTrans3);
+                    changeButtonColor(true, findAnswerButton(learningWordsCursor.getString(indexDesc)));
                 }
                 break;
             case R.id.btn_trn1_w4:
-                if(btnTrans4.getText().toString() == learningWordsCursor.getString(indexDesc)){
+                if(btnTrans4.getText().toString().equalsIgnoreCase(learningWordsCursor.getString(indexDesc))){
                     updateProgress();
+                    changeButtonColor(true, btnTrans4);
 
                 }else{
-                    /// btnTrans1.setBackgroundColor(getResources().getColor(R.color.colorRed));
-
+                    changeButtonColor(false, btnTrans4);
+                    changeButtonColor(true, findAnswerButton(learningWordsCursor.getString(indexDesc)));
                 }
                 break;
             case R.id.btn_trn1_w5:
-                if(btnTrans5.getText().toString() == learningWordsCursor.getString(indexDesc)){
+                if(btnTrans5.getText().toString().equalsIgnoreCase(learningWordsCursor.getString(indexDesc))){
                     updateProgress();
+                    changeButtonColor(true, btnTrans5);
 
                 }else{
-                    /// btnTrans1.setBackgroundColor(getResources().getColor(R.color.colorRed));
-
+                    changeButtonColor(false, btnTrans5);
+                    changeButtonColor(true, findAnswerButton(learningWordsCursor.getString(indexDesc)));
                 }
                 break;
             case R.id.btn_trn1_w6:
-                if(btnTrans6.getText().toString() == learningWordsCursor.getString(indexDesc)){
+                if(btnTrans6.getText().toString().equalsIgnoreCase(learningWordsCursor.getString(indexDesc))){
                     updateProgress();
+                    changeButtonColor(true, btnTrans6);
 
                 }else{
-                    /// btnTrans1.setBackgroundColor(getResources().getColor(R.color.colorRed));
-
+                    changeButtonColor(false, btnTrans6);
+                    changeButtonColor(true, findAnswerButton(learningWordsCursor.getString(indexDesc)));
                 }
                 break;
 
         }
-        buttonPressed();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                buttonPressed();
+            }
+        }, 4000);
+       //buttonPressed();
+
 
     }
 
 
     public void buttonPressed(){
         if(learningWordsCursor.moveToNext()){
+
             setButtonsText();
         }else{
             learningWordsCursor.close();
@@ -162,5 +172,72 @@ public class TrainingWordTranslationActivity extends Activity implements View.On
         btnTrans6.setText(randoms.get(5));
 
 
+    }
+
+    public void changeButtonColor(final boolean answer, final Button button){
+        if(answer) {
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    button.setBackgroundColor(getResources().getColor(R.color.colorGreen));
+
+                }
+            }, 2000);
+
+        }else{
+            button.setBackgroundColor(getResources().getColor(R.color.colorRed));
+//            handler.postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    button.setBackgroundColor(getResources().getColor(R.color.colorRed));
+//
+//                }
+//            }, 2000);
+
+        }
+
+//        Thread thread = new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//                try {
+//                    Thread.sleep(2000);
+//                    button.setBackgroundResource(android.R.drawable.btn_default);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//
+//            }
+//        });
+//        thread.run();
+
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                button.setBackgroundResource(android.R.drawable.btn_default);
+
+            }
+        }, 4000);
+
+
+
+
+    }
+
+    public Button findAnswerButton(String desc){
+        if(desc.equalsIgnoreCase(btnTrans1.getText().toString()))
+            return btnTrans1;
+        if(desc.equalsIgnoreCase(btnTrans2.getText().toString()))
+            return btnTrans2;
+        if(desc.equalsIgnoreCase(btnTrans3.getText().toString()))
+            return btnTrans3;
+        if(desc.equalsIgnoreCase(btnTrans4.getText().toString()))
+            return btnTrans4;
+        if(desc.equalsIgnoreCase(btnTrans5.getText().toString()))
+            return btnTrans5;
+        if(desc.equalsIgnoreCase(btnTrans6.getText().toString()))
+            return btnTrans6;
+        return null;
     }
 }
