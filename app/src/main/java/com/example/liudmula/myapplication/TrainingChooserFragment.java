@@ -42,6 +42,8 @@ public class TrainingChooserFragment extends Fragment implements View.OnClickLis
         switch (v.getId()){
             case R.id.btn_w_t:
                 intent.setClass(context, TrainingWordTranslationActivity.class);
+                intent.putExtra("training", 0);
+
                 startActivity(intent);
                 break;
             case R.id.btn_t_w:

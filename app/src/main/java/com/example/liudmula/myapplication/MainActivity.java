@@ -175,6 +175,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_training) {
             fragmentClass = TrainingChooserFragment.class;
 
+
         } else if (id == R.id.nav_settings) {
             fragmentClass = SettingsFragment.class;
 
