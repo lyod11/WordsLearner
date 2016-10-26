@@ -43,12 +43,14 @@ public class TrainingChooserFragment extends Fragment implements View.OnClickLis
             case R.id.btn_w_t:
                 intent.setClass(context, TrainingActivity.class);
                 intent.putExtra("training", 0);
-
+                intent.putExtra("type", true);
                 startActivity(intent);
                 break;
             case R.id.btn_t_w:
-                toast = Toast.makeText(context, "Тренування переклад-слово не працює", Toast.LENGTH_SHORT);
-                toast.show();
+                intent.setClass(context, TrainingActivity.class);
+                intent.putExtra("training", 0);
+                intent.putExtra("type", false);
+                startActivity(intent);
                 break;
             case R.id.btn_card:
                 toast = Toast.makeText(context, "Тренування словникові картки не працює", Toast.LENGTH_SHORT);

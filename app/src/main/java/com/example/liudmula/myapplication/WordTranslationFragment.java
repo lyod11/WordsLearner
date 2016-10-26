@@ -26,6 +26,7 @@ public class WordTranslationFragment extends Fragment implements View.OnClickLis
     int correctAnswers = 0;
     Integer qnumber = 3;
     Training training;
+    boolean word_translation;
     View v;
 
 
@@ -50,6 +51,7 @@ public class WordTranslationFragment extends Fragment implements View.OnClickLis
         btnTrans6 = (Button)v.findViewById(R.id.btn_trn1_w6);
 
         training = new Training(v.getContext());
+        word_translation = getArguments().getBoolean("type");
         setButtonsText();
         return v;
     }
@@ -67,7 +69,12 @@ public class WordTranslationFragment extends Fragment implements View.OnClickLis
     @Override
     public void onClick(View v) {
         Button btnClicked = (Button)v.findViewById(v.getId());
-        final Button btnCorrectAnswer = findAnswerButton(training.learningWordsCursor.getString(training.indexDesc));
+        final Button btnCorrectAnswer;
+        if(word_translation) {
+            btnCorrectAnswer = findAnswerButton(training.learningWordsCursor.getString(training.indexDesc));
+        }else{
+            btnCorrectAnswer = findAnswerButton(training.learningWordsCursor.getString(training.indexWord));
+        }
         if(btnClicked.equals(btnCorrectAnswer)){
             training.updateProgress();
             training.changeButtonColor(true, btnClicked, delayTime);
@@ -100,8 +107,15 @@ public class WordTranslationFragment extends Fragment implements View.OnClickLis
 
 
     public void setButtonsText(){
-        ArrayList<String> randoms = training.getRandoms("5", true);
-        tvWord.setText(training.learningWordsCursor.getString(training.indexWord));
+        ArrayList<String> randoms;
+        if(word_translation) {
+            randoms = training.getRandoms("5", true);
+            tvWord.setText(training.learningWordsCursor.getString(training.indexWord));
+        }
+        else{
+            randoms = training.getRandoms("5", false);
+            tvWord.setText(training.learningWordsCursor.getString(training.indexDesc));
+        }
         btnTrans1.setText(randoms.get(0));
         btnTrans2.setText(randoms.get(1));
         btnTrans3.setText(randoms.get(2));

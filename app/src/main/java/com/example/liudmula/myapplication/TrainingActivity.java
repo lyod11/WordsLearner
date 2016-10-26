@@ -24,6 +24,7 @@ public class TrainingActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_training);
         int trainingFragmentIndex = getIntent().getIntExtra("training", -1);
+        boolean tratingType = getIntent().getBooleanExtra("type", true);
         Fragment fragment = null;
         Class fragmentClass = null;
         if(trainingFragmentIndex == 0){
@@ -37,8 +38,12 @@ public class TrainingActivity extends Activity {
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
+        Bundle bundle = new Bundle();
+        bundle.putBoolean("type", getIntent().getBooleanExtra("type", true));
         FragmentManager fragmentManager = getFragmentManager();
+        fragment.setArguments(bundle);
         fragmentManager.beginTransaction().replace(R.id.training_frame, fragment).commit();
+
 
     }
 
