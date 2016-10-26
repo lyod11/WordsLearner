@@ -9,7 +9,7 @@ import android.os.Handler;
 import android.widget.TextView;
 
 
-public class TrainingWordTranslationActivity extends Activity {
+public class TrainingActivity extends Activity {
     Button btnTrans1, btnTrans2, btnTrans3, btnTrans4, btnTrans5, btnTrans6;
     TextView tvWord;
     final Handler handler = new Handler();
@@ -22,7 +22,7 @@ public class TrainingWordTranslationActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_training_word_translation);
+        setContentView(R.layout.activity_training);
         int trainingFragmentIndex = getIntent().getIntExtra("training", -1);
         Fragment fragment = null;
         Class fragmentClass = null;
