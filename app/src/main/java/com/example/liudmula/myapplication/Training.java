@@ -1,7 +1,11 @@
 package com.example.liudmula.myapplication;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.database.Cursor;
+import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Button;
 
@@ -20,7 +24,7 @@ public class Training {
     long id;
     final Handler handler = new Handler();
     int delayTime = 2000;
-    int correctAnswers = 0;
+    Integer correctAnswers = 0;
     Integer qnumber = 3;
     Context context;
 
@@ -42,6 +46,7 @@ public class Training {
         Integer progress = learningWordsCursor.getInt(learningWordsCursor.getColumnIndex(DatabaseHelper.PROGRESS));
         progress += 20;
         dbManager.update(id, progress);
+        correctAnswers++;
     }
 
 
@@ -92,5 +97,25 @@ public class Training {
             learningWordsCursor.close();
             return false;
         }
+
+    }
+
+    public void callResultFragment(int typeTraining, Fragment fragFrom){
+        Class fragmentClass = ResultFragment.class;
+        Fragment fragment = null;
+        try {
+            fragment  = (Fragment) fragmentClass.newInstance();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        Bundle bundle = new Bundle();
+        bundle.putString("questions", qnumber.toString());
+        bundle.putString("answers", correctAnswers.toString());
+        bundle.putInt("trainingType", typeTraining);
+        fragment.setArguments(bundle);
+
+        FragmentManager fragmentManager = fragFrom.getFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.training_frame, fragment).commit();
+
     }
 }

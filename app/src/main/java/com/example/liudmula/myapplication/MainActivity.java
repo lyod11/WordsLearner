@@ -142,13 +142,14 @@ public class MainActivity extends AppCompatActivity
     public void onStart() {
         super.onStart();
 
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
         client.connect();
         AppIndex.AppIndexApi.start(client, getIndexApiAction());
         Intent intent = new Intent();
-        int id = intent.getIntExtra("Fragment", 0);
-        if(id != 0){
+        int id = intent.getIntExtra("Fragment", -1);
+        int idd = intent.getIntExtra("frag", -1);
+        if(idd!=-1)
+            this.startFragment(id);
+        if(id != -1){
             this.startFragment(id);
         }
 

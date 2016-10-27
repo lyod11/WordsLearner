@@ -1,6 +1,8 @@
 package com.example.liudmula.myapplication;
 
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.os.Handler;
@@ -13,9 +15,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class WordTranslationFragment extends Fragment implements View.OnClickListener{
 
 
@@ -23,8 +22,6 @@ public class WordTranslationFragment extends Fragment implements View.OnClickLis
     TextView tvWord;
     final Handler handler = new Handler();
     int delayTime = 2000;
-    int correctAnswers = 0;
-    Integer qnumber = 3;
     Training training;
     boolean word_translation;
     View v;
@@ -49,6 +46,7 @@ public class WordTranslationFragment extends Fragment implements View.OnClickLis
         btnTrans5 = (Button)v.findViewById(R.id.btn_trn1_w5);
         btnTrans5.setOnClickListener(this);
         btnTrans6 = (Button)v.findViewById(R.id.btn_trn1_w6);
+        btnTrans6.setOnClickListener(this);
 
         training = new Training(v.getContext());
         word_translation = getArguments().getBoolean("type");
@@ -88,6 +86,7 @@ public class WordTranslationFragment extends Fragment implements View.OnClickLis
             }, delayTime/2);
 
         }
+
         if(training.isNext()) {
             handler.postDelayed(new Runnable() {
                 @Override
@@ -96,13 +95,16 @@ public class WordTranslationFragment extends Fragment implements View.OnClickLis
                 }
             }, delayTime);
         }
-//        else
-//            викликати результатуючий фрагмент
+        else {
+            Fragment fragment = this;
+            if(word_translation){
+                training.callResultFragment(0, fragment);
+            }else{
+                training.callResultFragment(1, fragment);
+            }
+        }
+
     }
-
-
-
-
 
 
 
@@ -125,12 +127,6 @@ public class WordTranslationFragment extends Fragment implements View.OnClickLis
 
 
     }
-
-
-
-
-
-
 
     public Button findAnswerButton(String desc){
         if(desc.equalsIgnoreCase(btnTrans1.getText().toString()))
