@@ -1,6 +1,7 @@
 package com.example.liudmula.myapplication;
 
 
+import android.app.Activity;
 import android.app.DialogFragment;
 import android.content.Intent;
 import android.net.Uri;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity
      */
     private GoogleApiClient client;
 
+    public Fragment a;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +64,8 @@ public class MainActivity extends AppCompatActivity
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+        startFragment(R.id.nav_dictionary);
+
     }
 
     @Override
@@ -194,7 +198,8 @@ public class MainActivity extends AppCompatActivity
         }catch (Exception e){
             e.printStackTrace();
         }
-
+        if ((id == R.id.nav_dictionary))
+            a= fragment;
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.content_main, fragment).commit();
 

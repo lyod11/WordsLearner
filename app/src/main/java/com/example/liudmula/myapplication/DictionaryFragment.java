@@ -13,7 +13,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 
-public class DictionaryFragment extends Fragment {
+public class DictionaryFragment extends Fragment implements AddWordFragment.my_intf {
+
 
     private DBManager dbManager;
 
@@ -23,6 +24,7 @@ public class DictionaryFragment extends Fragment {
 
     private View view;
 
+    private  Cursor cursor;
 //    final String[] from = new String[] { DatabaseHelper._ID,    its unused
 //        DatabaseHelper.WORD, DatabaseHelper.DESC, DatabaseHelper.PROGRESS };
 
@@ -33,13 +35,15 @@ public class DictionaryFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_dictionary, container, false);
+        getActivity();
         listView = (ListView) view.findViewById(R.id.lvDict);
         dbManager = new DBManager(inflater.getContext());
         dbManager.open();
 
         //make the cursor global and private?
-        Cursor cursor = dbManager.fetch();
+         cursor = dbManager.fetch();
         adapter = new DictionaryCursorAdapter(inflater.getContext(), cursor);
+
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
@@ -79,5 +83,10 @@ public class DictionaryFragment extends Fragment {
     }
 
 
+    @Override
+    public void update_db_cursor() {
+        cursor = dbManager.fetch();
+        adapter.notifyDataSetChanged();
 
+    }
 }

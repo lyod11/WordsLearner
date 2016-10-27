@@ -62,6 +62,7 @@ public class ModifyWordFragmentDialog extends DialogFragment implements View.OnC
                 desc = descText.getText().toString();
 
                 dbManager.update(_id, word, desc);
+                ((MainActivity)getActivity()).startFragment(R.id.nav_dictionary);
                 this.dismiss();
                 break;
             case R.id.btn_Delete_word:

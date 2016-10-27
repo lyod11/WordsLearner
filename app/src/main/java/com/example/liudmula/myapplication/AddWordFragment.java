@@ -17,10 +17,15 @@ public class AddWordFragment extends DialogFragment implements View.OnClickListe
 
     private DBManager dbManager;
     private EditText etAddWord, etAddDesc;
+    public interface my_intf{
+        void update_db_cursor();
+    }
+    my_intf inf;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         getDialog().setTitle("Нове слово");
+        inf = (my_intf) ((MainActivity)getActivity()).a;
         View v = inflater.inflate(R.layout.add_word_dialog, null);
         v.findViewById(R.id.btn_Add_word).setOnClickListener(this);
         etAddWord = (EditText)v.findViewById(R.id.etAddWord);
@@ -36,6 +41,10 @@ public class AddWordFragment extends DialogFragment implements View.OnClickListe
         String word = etAddWord.getText().toString();
         String desc = etAddDesc.getText().toString();
         dbManager.insert(word, desc, 0);
+        inf.update_db_cursor();
+        //((MainActivity)getActivity()).startFragment(R.id.nav_dictionary);
         dismiss();
+
+
     }
 }
