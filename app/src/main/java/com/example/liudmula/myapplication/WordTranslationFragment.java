@@ -48,21 +48,12 @@ public class WordTranslationFragment extends Fragment implements View.OnClickLis
         btnTrans6 = (Button)v.findViewById(R.id.btn_trn1_w6);
         btnTrans6.setOnClickListener(this);
 
-        training = new Training(v.getContext());
+        training = new Training(v.getContext(), 5);
         word_translation = getArguments().getBoolean("type");
         setButtonsText();
         return v;
     }
 
-
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-
-
-    }
 
     @Override
     public void onClick(View v) {

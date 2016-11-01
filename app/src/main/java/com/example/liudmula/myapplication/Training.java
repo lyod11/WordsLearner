@@ -29,8 +29,9 @@ public class Training {
     Context context;
 
 
-    Training(Context context){
+    Training(Context context, int number){
 
+        this.qnumber = number;
         this.context = context;
         dbManager = new DBManager(context);
         dbManager.open();
