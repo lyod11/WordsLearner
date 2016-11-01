@@ -115,6 +115,7 @@ public class Training {
         fragment.setArguments(bundle);
 
         FragmentManager fragmentManager = fragFrom.getFragmentManager();
+
         fragmentManager.beginTransaction().replace(R.id.training_frame, fragment).commit();
 
     }
