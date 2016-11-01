@@ -20,9 +20,12 @@ public class TrainingActivity extends Activity {
             fragmentClass = WordTranslationFragment.class;
             bundle.putBoolean("type", getIntent().getBooleanExtra("type", true));
         }
-        if(trainingFragmentIndex == 1){
-            fragmentClass = WordTranslationFragment.class;
-            bundle.putBoolean("type", getIntent().getBooleanExtra("type", false));
+//        if(trainingFragmentIndex == 1){
+//            fragmentClass = WordTranslationFragment.class;
+//            bundle.putBoolean("type", getIntent().getBooleanExtra("type", false));
+//        }
+        if(trainingFragmentIndex == 2){
+            fragmentClass = TrainingTypingFragment.class;
         }
 
         try {

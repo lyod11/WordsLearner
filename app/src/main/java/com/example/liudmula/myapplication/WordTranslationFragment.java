@@ -68,7 +68,7 @@ public class WordTranslationFragment extends Fragment implements View.OnClickLis
     public void onClick(View v) {
         Button btnClicked = (Button)v.findViewById(v.getId());
         final Button btnCorrectAnswer;
-        setButtonsClicable(false);
+        setButtonsClickable(false);
         if(word_translation) {
             btnCorrectAnswer = findAnswerButton(training.learningWordsCursor.getString(training.indexDesc));
         }else{
@@ -92,7 +92,7 @@ public class WordTranslationFragment extends Fragment implements View.OnClickLis
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    setButtonsClicable(true);
+                    setButtonsClickable(true);
                     setButtonsText();
                 }
             }, delayTime);
@@ -100,13 +100,6 @@ public class WordTranslationFragment extends Fragment implements View.OnClickLis
         }
         else {
             Fragment fragment = this;
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    setButtonsClicable(true);
-                    setButtonsText();
-                }
-            }, delayTime);
             if(word_translation){
                 training.callResultFragment(0, fragment);
             }else{
@@ -118,7 +111,7 @@ public class WordTranslationFragment extends Fragment implements View.OnClickLis
 
     }
 
-    public void setButtonsClicable(boolean bol){
+    public void setButtonsClickable(boolean bol){
         btnTrans1.setClickable(bol);
         btnTrans2.setClickable(bol);
         btnTrans3.setClickable(bol);

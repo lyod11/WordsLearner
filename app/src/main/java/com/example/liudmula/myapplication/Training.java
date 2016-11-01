@@ -100,7 +100,8 @@ public class Training {
 
     }
 
-    public void callResultFragment(int typeTraining, Fragment fragFrom){
+    public void callResultFragment(final int typeTraining, final Fragment fragFrom){
+        
         Class fragmentClass = ResultFragment.class;
         Fragment fragment = null;
         try {
@@ -113,10 +114,7 @@ public class Training {
         bundle.putString("answers", correctAnswers.toString());
         bundle.putInt("trainingType", typeTraining);
         fragment.setArguments(bundle);
-
         FragmentManager fragmentManager = fragFrom.getFragmentManager();
-
         fragmentManager.beginTransaction().replace(R.id.training_frame, fragment).commit();
-
     }
 }

@@ -57,8 +57,9 @@ public class TrainingChooserFragment extends Fragment implements View.OnClickLis
                 toast.show();
                 break;
             case R.id.btn_type:
-                toast = Toast.makeText(context, "Тренування написання не працює", Toast.LENGTH_SHORT);
-                toast.show();
+                intent.setClass(context, TrainingActivity.class);
+                intent.putExtra("training", 2);
+                startActivity(intent);
                 break;
         }
     }
