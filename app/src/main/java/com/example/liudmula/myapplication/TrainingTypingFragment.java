@@ -63,7 +63,7 @@ public class TrainingTypingFragment extends Fragment implements View.OnClickList
         }
         else {
             Fragment fragment = this;
-            training.callResultFragment(1, fragment);
+            training.callResultFragment(2, fragment);
 
         }
     }
