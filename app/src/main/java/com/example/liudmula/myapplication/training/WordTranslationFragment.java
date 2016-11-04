@@ -48,7 +48,7 @@ public class WordTranslationFragment extends Fragment implements View.OnClickLis
         btnTrans6 = (Button)v.findViewById(R.id.btn_trn1_w6);
         btnTrans6.setOnClickListener(this);
 
-        training = new Training(v.getContext(), 5);
+        training = new Training(v.getContext());
         word_translation = getArguments().getBoolean("type");
         setButtonsText();
         return v;

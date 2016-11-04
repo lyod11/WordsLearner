@@ -32,8 +32,8 @@ public class TrainingTypingFragment extends Fragment implements View.OnClickList
         tvCorrectAnsw = (TextView)v.findViewById(R.id.typ_tv_correctAnsw);
         btnOK = (Button)v.findViewById(R.id.typ_btn_ok);
         btnOK.setOnClickListener(this);
-        training = new Training(v.getContext(), 5);
-        tvCorrectAnsw.setVisibility(View.GONE);
+        training = new Training(v.getContext());
+        tvCorrectAnsw.setVisibility(View.INVISIBLE);
         tvWord.setText(training.learningWordsCursor.getString(training.indexDesc));
 
 
@@ -55,7 +55,7 @@ public class TrainingTypingFragment extends Fragment implements View.OnClickList
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    tvCorrectAnsw.setVisibility(View.GONE);
+                    tvCorrectAnsw.setVisibility(View.INVISIBLE);
                     etAnsw.setTextColor(getResources().getColor(R.color.colorBlack));
                     tvWord.setText(training.learningWordsCursor.getString(training.indexDesc));
                     etAnsw.setText("");
