@@ -1,7 +1,6 @@
 package com.example.liudmula.myapplication;
 
 
-import android.app.Activity;
 import android.app.DialogFragment;
 import android.content.Intent;
 import android.net.Uri;
@@ -20,6 +19,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.liudmula.myapplication.dictionary.AddWordFragment;
+import com.example.liudmula.myapplication.dictionary.DictionaryFragment;
+import com.example.liudmula.myapplication.training.TrainingChooserFragment;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;

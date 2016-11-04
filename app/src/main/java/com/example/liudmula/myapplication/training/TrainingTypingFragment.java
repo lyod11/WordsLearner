@@ -1,4 +1,4 @@
-package com.example.liudmula.myapplication;
+package com.example.liudmula.myapplication.training;
 
 
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.liudmula.myapplication.R;
 
 
 public class TrainingTypingFragment extends Fragment implements View.OnClickListener{

@@ -7,7 +7,7 @@
     android:orientation="horizontal"
     android:background="@color/colorWhite"
     android:id="@+id/frag_training_chooser"
-    tools:context="com.example.liudmula.myapplication.TrainingChooserFragment">
+    tools:context="com.example.liudmula.myapplication.training.TrainingChooserFragment">
 
     <GridLayout
         android:layout_width="wrap_content"

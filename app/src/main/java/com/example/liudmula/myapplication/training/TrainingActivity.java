@@ -1,9 +1,11 @@
-package com.example.liudmula.myapplication;
+package com.example.liudmula.myapplication.training;
 
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
+
+import com.example.liudmula.myapplication.R;
 
 
 public class TrainingActivity extends Activity {

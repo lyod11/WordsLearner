@@ -1,8 +1,6 @@
-package com.example.liudmula.myapplication;
+package com.example.liudmula.myapplication.training;
 
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.os.Handler;
@@ -11,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.liudmula.myapplication.R;
 
 import java.util.ArrayList;
 

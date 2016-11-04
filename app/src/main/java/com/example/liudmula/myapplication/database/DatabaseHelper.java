@@ -1,4 +1,4 @@
-package com.example.liudmula.myapplication;
+package com.example.liudmula.myapplication.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

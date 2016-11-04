@@ -1,13 +1,16 @@
-package com.example.liudmula.myapplication;
+package com.example.liudmula.myapplication.training;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Button;
+
+import com.example.liudmula.myapplication.database.DBManager;
+import com.example.liudmula.myapplication.database.DatabaseHelper;
+import com.example.liudmula.myapplication.R;
 
 import java.util.ArrayList;
 import java.util.Collections;

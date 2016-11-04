@@ -1,4 +1,4 @@
-package com.example.liudmula.myapplication;
+package com.example.liudmula.myapplication.dictionary;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
+
+import com.example.liudmula.myapplication.database.DatabaseHelper;
+import com.example.liudmula.myapplication.R;
 
 /**
  * Created by liudmula on 12.10.16.

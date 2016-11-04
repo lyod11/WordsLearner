@@ -1,4 +1,4 @@
-package com.example.liudmula.myapplication;
+package com.example.liudmula.myapplication.dictionary;
 
 
 
@@ -11,6 +11,9 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.example.liudmula.myapplication.database.DBManager;
+import com.example.liudmula.myapplication.R;
 
 
 public class DictionaryFragment extends Fragment implements AddWordFragment.my_intf {

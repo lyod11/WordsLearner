@@ -1,4 +1,4 @@
-package com.example.liudmula.myapplication;
+package com.example.liudmula.myapplication.training;
 
 
 import android.content.Context;
@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.example.liudmula.myapplication.R;
 
 public class TrainingChooserFragment extends Fragment implements View.OnClickListener{
 

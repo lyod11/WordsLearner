@@ -1,13 +1,16 @@
-package com.example.liudmula.myapplication;
+package com.example.liudmula.myapplication.dictionary;
 
 import android.app.DialogFragment;
-import android.content.DialogInterface;
 import android.os.Bundle;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+
+import com.example.liudmula.myapplication.database.DBManager;
+import com.example.liudmula.myapplication.MainActivity;
+import com.example.liudmula.myapplication.R;
 
 /**
  * Created by liudmula on 18.10.16.

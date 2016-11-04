@@ -1,4 +1,4 @@
-package com.example.liudmula.myapplication;
+package com.example.liudmula.myapplication.widgets;
 
 /**
  *               DO WHAT YOU WANT TO PUBLIC LICENSE
