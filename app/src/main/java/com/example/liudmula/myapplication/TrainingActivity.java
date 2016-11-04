@@ -27,6 +27,9 @@ public class TrainingActivity extends Activity {
         if(trainingFragmentIndex == 2){
             fragmentClass = TrainingTypingFragment.class;
         }
+        if(trainingFragmentIndex == 3){
+            fragmentClass = TrainingCardsFragment.class;
+        }
 
         try {
             fragment = (Fragment)fragmentClass.newInstance();

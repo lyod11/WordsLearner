@@ -1,0 +1,30 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.liudmula.myapplication.TrainingCardsFragment">
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_gravity="center"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="300dp"
+        card_view:cardCornerRadius="4dp"
+        style="@style/MyCardViewStyle">
+
+        <TextView
+            android:id="@+id/info_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Карточка на кота Василия"
+            android:gravity="center_vertical|center_horizontal|top"
+            android:textSize="36sp" />
+    </android.support.v7.widget.CardView>
+
+
+
+
+</LinearLayout>
