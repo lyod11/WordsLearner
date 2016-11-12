@@ -76,7 +76,9 @@ public class TrainingCardsFragment extends Fragment implements View.OnClickListe
             btnKnow.setVisibility(View.GONE);
             btnUnknown.setVisibility(View.GONE);
         }else{
-            training.callResultFragment(3, this);
+            Fragment fragment = this;
+            training.callResultFragment(3, fragment);
+
         }
     }
 
