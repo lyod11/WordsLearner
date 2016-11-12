@@ -16,8 +16,7 @@
         style="@style/MyCardViewStyle">
 
         <com.example.liudmula.myapplication.widgets.AutoResizeTextView
-
-            android:id="@+id/info_text"
+            android:id="@+id/cards_tv"
             android:text="кот Василий"
             android:textSize="200sp"
             android:gravity="center"
@@ -25,8 +24,58 @@
             android:maxLines="1"
             android:layout_height="100dp"
             android:layout_width="match_parent" />
+
     </android.support.v7.widget.CardView>
 
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="130dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:weightSum="2"
+        >
+
+
+        <Button
+            android:layout_width="180dp"
+            android:layout_height="90dp"
+            android:layout_weight="1"
+            android:id="@+id/cards_btn_know"
+            android:layout_gravity="center"
+            android:text="Знаю"
+            android:visibility="gone"
+            android:layout_marginRight="20dp"
+            android:textSize="20sp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="90dp"
+            android:layout_weight="0.5"
+            android:id="@+id/cards_btn_flip"
+            android:layout_marginLeft="245dp"
+            android:text="Перевернути"
+            android:visibility="visible"
+            android:textSize="20sp"/>
+
+
+
+        <Button
+            android:layout_width="180dp"
+            android:layout_height="90dp"
+            android:layout_weight="1"
+            android:id="@+id/cards_btn_unknown"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:text="Не знаю"
+            android:textSize="20sp"/>
+
+
+
+    </LinearLayout>
 
 
 
