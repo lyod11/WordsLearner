@@ -53,7 +53,7 @@
         android:layout_height="32dp"
         app1:ppvProgressFillType="radial"
         app1:ppvProgressColor="@color/colorAccent"
-        app1:ppvStrokeWidth="1                                                                                                                                                                      dp"
+        app1:ppvStrokeWidth="1dp"
         app1:ppvStrokeColor="@color/colorAccent"
         />
 
