@@ -11,6 +11,8 @@ import android.widget.TextView;
 import com.example.liudmula.myapplication.database.DatabaseHelper;
 import com.example.liudmula.myapplication.R;
 
+import com.filippudak.ProgressPieView.ProgressPieView;
+
 /**
  * Created by liudmula on 12.10.16.
  */
@@ -43,9 +45,10 @@ public class DictionaryCursorAdapter extends CursorAdapter {
         string = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.DESC));
         textView.setText(string);
 
-        textView = (TextView) view.findViewById(R.id.tvProgress);
+
         Integer integer = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.PROGRESS));
-        textView.setText(integer.toString());
+        ProgressPieView ppv = (ProgressPieView) view.findViewById(R.id.pvProgress);
+        ppv.setProgress(integer%100);
 
 
     }

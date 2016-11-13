@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res/android"
+    xmlns:app1="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -29,6 +30,7 @@
             android:id="@+id/tvWord"
             android:textAppearance="?android:textAppearanceMedium"
             android:text="blahblah"
+            android:textColor="@color/colorPrimaryText"
             android:textStyle="bold"/>
 
         <TextView
@@ -38,19 +40,22 @@
             android:layout_marginLeft="10dp"
             android:textAppearance="?android:textAppearanceSmall"
             android:text="sdasdsadsa"
+            android:textColor="@color/colorSecondaryText"
             />
 
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="3%"
-        android:id="@+id/tvProgress"
-        android:textAppearance="?android:textAppearanceLarge"
-        android:paddingTop="5dp"
-        android:layout_gravity="end"
-        android:gravity="center"
-/>
+    <com.filippudak.ProgressPieView.ProgressPieView
+        android:layout_gravity="right|top"
+        android:id="@+id/pvProgress"
+        android:textColor="@color/colorPrimaryText"
+        android:textSize="18sp"
+        android:layout_height="32dp"
+        app1:ppvProgressFillType="radial"
+        app1:ppvProgressColor="@color/colorAccent"
+        app1:ppvStrokeWidth="1                                                                                                                                                                      dp"
+        app1:ppvStrokeColor="@color/colorAccent"
+        />
+
 
 </GridLayout>
