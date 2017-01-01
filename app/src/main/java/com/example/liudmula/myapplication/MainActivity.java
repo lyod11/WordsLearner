@@ -7,8 +7,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -21,6 +21,7 @@ import android.view.MenuItem;
 
 import com.example.liudmula.myapplication.dictionary.AddWordFragment;
 import com.example.liudmula.myapplication.dictionary.DictionaryFragment;
+import com.example.liudmula.myapplication.dictionary.TabParentFragment;
 import com.example.liudmula.myapplication.training.TrainingChooserFragment;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -48,10 +49,14 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DialogFragment dialogAdd = new AddWordFragment();
-                dialogAdd.show(getFragmentManager(), "DialogAdd");
+//                DialogFragment dialogAdd = new AddWordFragment();
+//                dialogAdd.show(getFragmentManager(), "DialogAdd");
 //                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                        .setAction("Action", null).show();
+                TabParentFragment tabFrag = new TabParentFragment();
+                FragmentManager fragmentManager = getSupportFragmentManager();
+
+                fragmentManager.beginTransaction().replace(R.id.content_main, tabFrag).commit();
             }
         }); 
 
@@ -173,7 +178,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void startFragment(int id){
-        Fragment fragment = null;
+       Fragment fragment = null;
         Class fragmentClass = null;
 
         if (id == R.id.nav_dictionary) {
@@ -186,8 +191,8 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_settings) {
             fragmentClass = SettingsFragment.class;
 
-        } else if (id == R.id.nav_about) {
-            fragmentClass = AboutFragment.class;
+//        } else if (id == R.id.nav_about) {
+//            fragmentClass = AboutFragment.class;
 
         } else if (id == R.id.nav_share) {
 
@@ -202,7 +207,7 @@ public class MainActivity extends AppCompatActivity
         }
         if ((id == R.id.nav_dictionary))
             a= fragment;
-        FragmentManager fragmentManager = getFragmentManager();
+        FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.content_main, fragment).commit();
 
     }

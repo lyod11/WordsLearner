@@ -2,7 +2,7 @@ package com.example.liudmula.myapplication.dictionary;
 
 
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.support.v4.app.FragmentManager;
 
 import com.example.liudmula.myapplication.database.DBManager;
 import com.example.liudmula.myapplication.R;
@@ -71,7 +72,7 @@ public class DictionaryFragment extends Fragment implements AddWordFragment.my_i
                 bundle.putString("desc", descKey);
                 ModifyWordFragmentDialog dialogModify = new ModifyWordFragmentDialog();
                 dialogModify.setArguments(bundle);
-                dialogModify.show(getFragmentManager(), "DialogModify");
+                //dialogModify.show(getFragmentManager(), "DialogModify");
                 adapter.notifyDataSetChanged();
 
             }
