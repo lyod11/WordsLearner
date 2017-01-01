@@ -201,7 +201,7 @@ public class MainActivity extends AppCompatActivity
         }
 
         try {
-            fragment = (Fragment)fragmentClass.newInstance();
+            fragment = (Fragment)fragmentClass. newInstance();
         }catch (Exception e){
             e.printStackTrace();
         }
