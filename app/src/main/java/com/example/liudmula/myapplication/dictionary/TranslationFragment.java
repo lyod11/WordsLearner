@@ -1,6 +1,8 @@
 package com.example.liudmula.myapplication.dictionary;
 
 
+import android.app.LoaderManager;
+import android.content.Loader;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,28 +14,54 @@ import android.widget.ListView;
 import com.example.liudmula.myapplication.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
-public class TranslationFragment extends Fragment {
+public class TranslationFragment extends Fragment implements android.support.v4.app.LoaderManager.LoaderCallbacks<List<String>> {
 
 
+    private static final String REQUEST_URL = "https://glosbe.com/gapi/translate?from=pol&dest=ukr&format=json&phrase=witaj&pretty=true";
+    private static final String LOG_TAG = TranslationFragment.class.getSimpleName();
 
+    private static final int LOADER_ID = 0;
 
-
+    ArrayAdapter<String> adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_translation, container, false);
 
-        ArrayList<String> definitions = QueryUtils.extractTranslations();
+        // ArrayList<String> definitions = QueryUtils.extractTranslations();
 
         ListView lv = (ListView) v.findViewById(R.id.lv_tab_translation);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getContext(),
-                android.R.layout.simple_list_item_multiple_choice, definitions);
+        adapter = new ArrayAdapter<>(this.getContext(),
+                android.R.layout.simple_list_item_multiple_choice, new ArrayList<String>());
         lv.setAdapter(adapter);
+
+        getLoaderManager().initLoader(LOADER_ID, null, this).forceLoad();
 
         return v;
     }
 
+    @Override
+    public android.support.v4.content.Loader onCreateLoader(int id, Bundle args) {
+        return new TranslationLoader(this.getContext(), REQUEST_URL);
+    }
+
+    @Override
+    public void onLoadFinished(android.support.v4.content.Loader<List<String>> loader, List<String> translations) {
+      adapter.clear();
+        if(translations!=null && !translations.isEmpty()){
+            adapter.addAll(translations);
+        }
+    }
+
+    @Override
+    public void onLoaderReset(android.support.v4.content.Loader loader) {
+        adapter.clear();
+    }
 }
+
+
+
