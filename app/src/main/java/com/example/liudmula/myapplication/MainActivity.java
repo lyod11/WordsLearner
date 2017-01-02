@@ -21,6 +21,7 @@ import android.view.MenuItem;
 
 import com.example.liudmula.myapplication.dictionary.AddWordFragment;
 import com.example.liudmula.myapplication.dictionary.DictionaryFragment;
+import com.example.liudmula.myapplication.dictionary.ExamplesFragment;
 import com.example.liudmula.myapplication.dictionary.TabParentFragment;
 import com.example.liudmula.myapplication.training.TrainingChooserFragment;
 import com.google.android.gms.appindexing.Action;
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity
 //                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                        .setAction("Action", null).show();
                 TabParentFragment tabFrag = new TabParentFragment();
+
                 FragmentManager fragmentManager = getSupportFragmentManager();
 
                 fragmentManager.beginTransaction().replace(R.id.content_main, tabFrag).commit();

@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cardview_dark_background"
     tools:context="com.example.liudmula.myapplication.dictionary.TranslationFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -10,6 +11,7 @@
         android:layout_height="match_parent"
         android:text="Translation fragment"
         android:gravity="center"
+        android:textSize="20sp"
         android:layout_gravity="center"/>
 
 </FrameLayout>

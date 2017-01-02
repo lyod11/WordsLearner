@@ -1,11 +1,13 @@
 package com.example.liudmula.myapplication.dictionary;
 
 
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,9 +21,10 @@ import java.util.List;
 
 public class TabParentFragment extends Fragment {
 
-
     TabLayout tabLayout;
     ViewPager viewPager;
+
+    private static final int NUM_PAGES = 2;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,7 +34,13 @@ public class TabParentFragment extends Fragment {
         setupViewPager(viewPager);
 
         tabLayout = (TabLayout) view.findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(viewPager);
+       // tabLayout.setupWithViewPager(viewPager);
+        tabLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                tabLayout.setupWithViewPager(viewPager);
+            }
+        });
 
         return view;
     }
@@ -43,7 +52,7 @@ public class TabParentFragment extends Fragment {
         viewPager.setAdapter(adapter);
     }
 
-    class ViewPagerAdapter extends FragmentPagerAdapter {
+    class ViewPagerAdapter extends FragmentStatePagerAdapter {
         private final List<Fragment> mFragList = new ArrayList<>();
         private final List<String> mFragListTitles = new ArrayList<>();
 
