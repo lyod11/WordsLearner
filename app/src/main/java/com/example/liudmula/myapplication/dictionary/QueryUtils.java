@@ -127,8 +127,4 @@ public final class QueryUtils {
         return definitions;
     }
 
-
-
-
-
 }
