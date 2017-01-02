@@ -12,12 +12,9 @@ import com.example.liudmula.myapplication.R;
 
 public class ExamplesFragment extends Fragment {
 
-
     public ExamplesFragment() {
         // Required empty public constructor
     }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
