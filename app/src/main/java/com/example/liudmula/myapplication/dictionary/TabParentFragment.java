@@ -47,8 +47,14 @@ public class TabParentFragment extends Fragment {
 
     private void setupViewPager(ViewPager vp){
         ViewPagerAdapter adapter = new ViewPagerAdapter(getFragmentManager());
-        adapter.addFragment(new TranslationFragment(), "TRANSLATION");
-        adapter.addFragment(new ExamplesFragment(), "EXAMPLES");
+        Bundle bundle = new Bundle();
+        bundle.putString("word", getArguments().getString("word"));
+        TranslationFragment translationFragment = new TranslationFragment();
+        translationFragment.setArguments(bundle);
+        ExamplesFragment examplesFragment = new ExamplesFragment();
+        examplesFragment.setArguments(bundle);
+        adapter.addFragment(translationFragment, "TRANSLATION");
+        adapter.addFragment(examplesFragment, "EXAMPLES");
         viewPager.setAdapter(adapter);
     }
 

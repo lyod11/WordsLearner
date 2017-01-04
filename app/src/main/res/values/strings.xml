@@ -11,6 +11,9 @@
     <string name="btn_add">Додати</string>
     <string name="btn_cancel">Відмінити</string>
 
+    <string name="empty_state_not_found">Переклад такого слова не знайдений</string>
+    <string name="empty_state_no_connection">Відсутнє з\'єднання з інтернетом</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

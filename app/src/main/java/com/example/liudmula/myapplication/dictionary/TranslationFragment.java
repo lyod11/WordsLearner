@@ -2,6 +2,8 @@ package com.example.liudmula.myapplication.dictionary;
 
 
 
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.liudmula.myapplication.R;
 
@@ -26,15 +29,17 @@ public class TranslationFragment extends Fragment implements android.support.v4.
     private static final int LOADER_ID = 0;
 
     ArrayAdapter<String> adapter;
+    ListView lv;
+    TextView tvEmptyState;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_translation, container, false);
 
-        // ArrayList<String> definitions = QueryUtils.extractTranslations();
 
-        ListView lv = (ListView) v.findViewById(R.id.lv_tab_translation);
+        tvEmptyState = (TextView)v.findViewById(R.id.tv_translation_emptyState);
+        lv = (ListView) v.findViewById(R.id.lv_tab_translation);
         adapter = new ArrayAdapter<>(this.getContext(),
                 android.R.layout.simple_list_item_multiple_choice, new ArrayList<String>());
         lv.setAdapter(adapter);
@@ -57,9 +62,21 @@ public class TranslationFragment extends Fragment implements android.support.v4.
 
     @Override
     public void onLoadFinished(android.support.v4.content.Loader<List<String>> loader, List<String> translations) {
-      adapter.clear();
+        adapter.clear();
         if(translations!=null && !translations.isEmpty()){
             adapter.addAll(translations);
+        }
+        ConnectivityManager connectivityManager =
+                (ConnectivityManager) getContext().getSystemService(getContext().CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork =     connectivityManager.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+
+        if(isConnected){
+            tvEmptyState.setText(getString(R.string.empty_state_not_found));
+            lv.setEmptyView(tvEmptyState);
+        }else{
+            tvEmptyState.setText(getString(R.string.empty_state_no_connection));
+            lv.setEmptyView(tvEmptyState);
         }
     }
 
