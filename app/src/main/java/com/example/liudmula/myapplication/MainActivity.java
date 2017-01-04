@@ -1,7 +1,10 @@
 package com.example.liudmula.myapplication;
 
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,6 +12,7 @@ import android.support.design.widget.FloatingActionButton;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -18,6 +22,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.liudmula.myapplication.dictionary.AddWordFragment;
 import com.example.liudmula.myapplication.dictionary.DictionaryFragment;
@@ -28,6 +34,8 @@ import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
+
+import static com.example.liudmula.myapplication.R.id.etAddWord;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -51,8 +59,9 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                android.support.v4.app.DialogFragment dialogAdd = new AddWordFragment();
-                dialogAdd.show(getSupportFragmentManager(), "DialogAdd");
+//                android.support.v4.app.DialogFragment dialogAdd = new AddWordFragment();
+//                dialogAdd.show(getSupportFragmentManager(), "DialogAdd");
+                openDialog();
             }
         }); 
 
@@ -116,7 +125,6 @@ public class MainActivity extends AppCompatActivity
         //creating a new fragment
 
         this.startFragment(id);
-
 
         //secect menu item
         item.setChecked(true);
@@ -206,6 +214,47 @@ public class MainActivity extends AppCompatActivity
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.content_main, fragment).commit();
 
+    }
+
+    private void openDialog(){
+        LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
+        View v = inflater.inflate(R.layout.add_word_dialog, null);
+        final EditText etAddWord = (EditText)v.findViewById(R.id.etAddWord);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                .setTitle("Нове слово")
+                .setView(v);
+
+
+        builder.setPositiveButton(R.string.btn_add, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                word = etAddWord.getText().toString();
+                TabParentFragment tabFrag = new TabParentFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("word", word);
+                tabFrag.setArguments(bundle);
+                tabFrag.getFragmentManager();
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.content_main, tabFrag).commit();
+            }
+        });
+        builder.setNegativeButton(R.string.btn_cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        // hack for title and divider color
+        Dialog dialog = builder.show();
+        int dividerId = dialog.getContext().getResources().getIdentifier("android:id/titleDivider", null, null);
+        View divider = dialog.findViewById(dividerId);
+        divider.setVisibility(View.INVISIBLE);
+        //divider.setBackgroundColor(getResources().getColor(R.color.colorDivider));
+        int titleId = dialog.getContext().getResources().getIdentifier("android:id/alertTitle", null, null);
+        TextView title = (TextView)dialog.findViewById(titleId);
+
+        title.setTextColor(getResources().getColor(R.color.colorPrimaryText));
     }
 
 }

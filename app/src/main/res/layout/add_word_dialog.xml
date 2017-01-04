@@ -1,44 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="200dp"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="20dp"
         android:id="@+id/etAddWord"
         android:ems="10"
         android:hint="Enter word"/>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="2"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal">
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:weightSum="2"-->
+        <!--android:gravity="center_horizontal"-->
+        <!--android:orientation="horizontal">-->
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btn_AddDialog_add"
-            android:layout_weight="1"
-            android:text="ДОДАТИ"
-            />
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btn_AddDialog_cancel"
-            android:layout_weight="1"
-            android:text="ВІДМІНИТИ"
-            />
-
-
-    </LinearLayout>
-
-
-
-
+        <!--<Button-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/btn_AddDialog_add"-->
+            <!--android:layout_weight="1"-->
+            <!--android:text="ДОДАТИ"-->
+            <!--/>-->
+        <!--<Button-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/btn_AddDialog_cancel"-->
+            <!--android:layout_weight="1"-->
+            <!--android:text="ВІДМІНИТИ"-->
+            <!--/>-->
+    <!--</LinearLayout>-->
 </LinearLayout>
