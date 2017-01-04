@@ -113,18 +113,30 @@ public final class QueryUtils {
 
         try {
             baseJsonResponse = new JSONObject(jsonResponse);
-            JSONArray definitionArray = baseJsonResponse.getJSONArray("tuc");
-
-            for(int i=0; i<definitionArray.length(); i++){
-                JSONObject currentItem = definitionArray.getJSONObject(i);
-                JSONObject currPhrase = currentItem.getJSONObject("phrase");
-                String def = currPhrase.getString("text");
-                definitions.add(def);
+            JSONArray jsonArray;
+            if(baseJsonResponse.has("tuc")){
+                jsonArray = baseJsonResponse.getJSONArray("tuc");
+                for(int i=0; i<jsonArray.length()-1; i++) {
+                    JSONObject currentItem = jsonArray.getJSONObject(i);
+                    JSONObject currPhrase = currentItem.getJSONObject("phrase");
+                    String def = currPhrase.getString("text");
+                    definitions.add(def);
+                }
+            }else {
+                jsonArray = baseJsonResponse.getJSONArray("examples");
+                for(int i=0; i<jsonArray.length(); i++) {
+                    JSONObject currentItem = jsonArray.getJSONObject(i);
+                    String first = currentItem.getString("first");
+                    String second = currentItem.getString("second");
+                    definitions.add(first);
+                    definitions.add(second);
+                }
             }
         } catch (JSONException e) {
             Log.e("QueryUtils", "Problem parsing the earthquake JSON results", e);
         }
         return definitions;
     }
+
 
 }
