@@ -3,7 +3,7 @@ package com.example.liudmula.myapplication;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -25,7 +25,7 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.liudmula.myapplication.dictionary.AddWordFragment;
+
 import com.example.liudmula.myapplication.dictionary.DictionaryFragment;
 import com.example.liudmula.myapplication.dictionary.ExamplesFragment;
 import com.example.liudmula.myapplication.dictionary.TabParentFragment;
@@ -250,10 +250,8 @@ public class MainActivity extends AppCompatActivity
         int dividerId = dialog.getContext().getResources().getIdentifier("android:id/titleDivider", null, null);
         View divider = dialog.findViewById(dividerId);
         divider.setVisibility(View.INVISIBLE);
-        //divider.setBackgroundColor(getResources().getColor(R.color.colorDivider));
         int titleId = dialog.getContext().getResources().getIdentifier("android:id/alertTitle", null, null);
         TextView title = (TextView)dialog.findViewById(titleId);
-
         title.setTextColor(getResources().getColor(R.color.colorPrimaryText));
     }
 
