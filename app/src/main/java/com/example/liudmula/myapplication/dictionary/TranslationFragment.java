@@ -49,10 +49,10 @@ public class TranslationFragment extends Fragment implements android.support.v4.
         //phrase=sorry&pretty=true
         String word = getArguments().getString("word");
         Uri baseUri = Uri.parse(REQUEST_URL);
-        Uri.Builder uriBilder = baseUri.buildUpon();
-        uriBilder.appendQueryParameter("phrase", word);
-        uriBilder.appendQueryParameter("pretty", "false");
-        return new TranslationLoader(this.getContext(), uriBilder.toString());
+        Uri.Builder uriBuilder = baseUri.buildUpon();
+        uriBuilder.appendQueryParameter("phrase", word);
+        uriBuilder.appendQueryParameter("pretty", "false");
+        return new TranslationLoader(this.getContext(), uriBuilder.toString());
     }
 
     @Override
