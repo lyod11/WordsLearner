@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.liudmula.myapplication.R;
@@ -25,12 +26,12 @@ public class TranslationFragment extends Fragment implements android.support.v4.
 
     private static final String REQUEST_URL = "https://glosbe.com/gapi/translate?from=eng&dest=ukr&format=json";
     private static final String LOG_TAG = TranslationFragment.class.getSimpleName();
-
     private static final int LOADER_ID = 0;
 
     ArrayAdapter<String> adapter;
     ListView lv;
     TextView tvEmptyState;
+    ProgressBar pb;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,6 +40,7 @@ public class TranslationFragment extends Fragment implements android.support.v4.
 
 
         tvEmptyState = (TextView)v.findViewById(R.id.tv_translation_emptyState);
+        pb = (ProgressBar)v.findViewById(R.id.pb_tab);
         lv = (ListView) v.findViewById(R.id.lv_tab_translation);
         adapter = new ArrayAdapter<>(this.getContext(),
                 android.R.layout.simple_list_item_multiple_choice, new ArrayList<String>());
@@ -66,6 +68,7 @@ public class TranslationFragment extends Fragment implements android.support.v4.
         if(translations!=null && !translations.isEmpty()){
             adapter.addAll(translations);
         }
+        pb.setVisibility(View.GONE);
         ConnectivityManager connectivityManager =
                 (ConnectivityManager) getContext().getSystemService(getContext().CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork =     connectivityManager.getActiveNetworkInfo();
