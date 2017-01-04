@@ -17,7 +17,7 @@ import com.example.liudmula.myapplication.database.DBManager;
 import com.example.liudmula.myapplication.R;
 
 
-public class DictionaryFragment extends Fragment implements AddWordFragment.my_intf {
+public class DictionaryFragment extends Fragment {
 
 
     private DBManager dbManager;
@@ -81,16 +81,4 @@ public class DictionaryFragment extends Fragment implements AddWordFragment.my_i
         return view;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-
-    @Override
-    public void update_db_cursor() {
-        cursor = dbManager.fetch();
-        adapter.notifyDataSetChanged();
-
-    }
 }

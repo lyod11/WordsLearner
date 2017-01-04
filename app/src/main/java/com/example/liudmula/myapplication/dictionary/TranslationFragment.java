@@ -1,8 +1,7 @@
 package com.example.liudmula.myapplication.dictionary;
 
 
-import android.app.LoaderManager;
-import android.content.Loader;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -20,7 +19,7 @@ import java.util.List;
 public class TranslationFragment extends Fragment implements android.support.v4.app.LoaderManager.LoaderCallbacks<List<String>> {
 
 
-    private static final String REQUEST_URL = "https://glosbe.com/gapi/translate?from=pol&dest=ukr&format=json&phrase=witaj&pretty=true";
+    private static final String REQUEST_URL = "https://glosbe.com/gapi/translate?from=eng&dest=ukr&format=json&phrase=sorry&pretty=true";
     private static final String LOG_TAG = TranslationFragment.class.getSimpleName();
 
     private static final int LOADER_ID = 0;

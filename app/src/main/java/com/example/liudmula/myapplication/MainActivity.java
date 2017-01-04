@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity
     private GoogleApiClient client;
 
     public Fragment a;
+    String word;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,15 +51,8 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                DialogFragment dialogAdd = new AddWordFragment();
-//                dialogAdd.show(getFragmentManager(), "DialogAdd");
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-                TabParentFragment tabFrag = new TabParentFragment();
-
-                FragmentManager fragmentManager = getSupportFragmentManager();
-
-                fragmentManager.beginTransaction().replace(R.id.content_main, tabFrag).commit();
+                android.support.v4.app.DialogFragment dialogAdd = new AddWordFragment();
+                dialogAdd.show(getSupportFragmentManager(), "DialogAdd");
             }
         }); 
 
@@ -213,6 +207,5 @@ public class MainActivity extends AppCompatActivity
         fragmentManager.beginTransaction().replace(R.id.content_main, fragment).commit();
 
     }
-
 
 }
