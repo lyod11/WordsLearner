@@ -2,6 +2,7 @@ package com.example.liudmula.myapplication.dictionary;
 
 
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -19,7 +20,7 @@ import java.util.List;
 public class TranslationFragment extends Fragment implements android.support.v4.app.LoaderManager.LoaderCallbacks<List<String>> {
 
 
-    private static final String REQUEST_URL = "https://glosbe.com/gapi/translate?from=eng&dest=ukr&format=json&phrase=sorry&pretty=true";
+    private static final String REQUEST_URL = "https://glosbe.com/gapi/translate?from=eng&dest=ukr&format=json";
     private static final String LOG_TAG = TranslationFragment.class.getSimpleName();
 
     private static final int LOADER_ID = 0;
@@ -45,7 +46,13 @@ public class TranslationFragment extends Fragment implements android.support.v4.
 
     @Override
     public android.support.v4.content.Loader onCreateLoader(int id, Bundle args) {
-        return new TranslationLoader(this.getContext(), REQUEST_URL);
+        //phrase=sorry&pretty=true
+        String word = getArguments().getString("word");
+        Uri baseUri = Uri.parse(REQUEST_URL);
+        Uri.Builder uriBilder = baseUri.buildUpon();
+        uriBilder.appendQueryParameter("phrase", word);
+        uriBilder.appendQueryParameter("pretty", "false");
+        return new TranslationLoader(this.getContext(), uriBilder.toString());
     }
 
     @Override
